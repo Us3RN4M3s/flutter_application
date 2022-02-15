@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'ARK',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -57,15 +57,42 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      drawer: NavigationBar(
-        destinations: [],
-      ),
-
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+
+      drawer: Drawer(
+        child: ListView(padding: EdgeInsets.zero, children: const <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.brown,
+            ),
+            child: Text(
+              'Menu',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.message),
+            title: Text('Messages'),
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('Profile'),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+          ),
+          ListTile(leading: Icon(Icons.login), title: Text('Login')),
+        ]),
+      ),
+
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -86,11 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'Welcome to the ARK App',
+              style: Theme.of(context).textTheme.headline4,
             ),
             Text(
-              'funny',
+              'This is the HomePage',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
